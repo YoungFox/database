@@ -17,7 +17,7 @@ func main() {
 	stmt, err := db.Prepare("INSERT INTO userinfo SET username=?,department=?,created=?")
 	checkErr(err)
 
-	res, err := stmt.Exec("astaxie", "研发部门", "2012-12-09")
+	res, err := stmt.Exec("ywl", "研发部门", "2012-12-09")
 	checkErr(err)
 
 	id, err := res.LastInsertId()
@@ -25,10 +25,10 @@ func main() {
 
 	fmt.Println(id)
 	//更新数据
-	stmt, err = db.Prepare("update userinfo set username=? where uid=?")
+	stmt, err = db.Prepare("UPDATE userinfo set username=? where uid=?")
 	checkErr(err)
 
-	res, err = stmt.Exec("astaxieupdate", id)
+	res, err = stmt.Exec("ywlupdate", id)
 	checkErr(err)
 
 	affect, err := res.RowsAffected()
@@ -53,17 +53,17 @@ func main() {
 		fmt.Println(created)
 	}
 
-	//删除数据
-	// stmt, err = db.Prepare("delete from userinfo where uid=?")
-	// checkErr(err)
+	// 删除数据
+	stmt, err = db.Prepare("delete from userinfo where uid=?")
+	checkErr(err)
 
-	// res, err = stmt.Exec(id)
-	// checkErr(err)
+	res, err = stmt.Exec(id)
+	checkErr(err)
 
-	// affect, err = res.RowsAffected()
-	// checkErr(err)
+	affect, err = res.RowsAffected()
+	checkErr(err)
 
-	// fmt.Println(affect)
+	fmt.Println(affect)
 
 	db.Close()
 
