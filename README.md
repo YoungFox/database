@@ -12,11 +12,13 @@ docker-compose启动本地mysql服务
 
 database test
 
-Column	Type	Comment
-uid	int Auto Increment	
-username	text	
-department	text	
-created	date
+table userinfo
+
+Column	     Type	   
+uid	         int     
+username	   text	
+department	 text	
+created	     date
 
 
 redis 命令
